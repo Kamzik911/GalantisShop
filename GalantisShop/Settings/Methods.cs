@@ -20,11 +20,12 @@ namespace GalantisShop.Settings
             webDriver.Navigate().GoToUrl(galantisMainPage);
         }
 
-        public void WaitForVisibleCssSelector(int defineSeconds, string cssElement)
+        //Waits for elements
+        public void CheckVisibleCssSelector(string cssElement)
         {
             try
             {
-                WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(defineSeconds));
+                WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
                 wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(cssElement)));
             }
 
@@ -34,12 +35,79 @@ namespace GalantisShop.Settings
             }
         }
 
-        public void ClickOnCssSelector(string cssSelector)
+        public void CheckVisibleLinkTextSelector(string linkTextElement)
         {
-            WaitForVisibleCssSelector(10, cssSelector);
-            webDriver.FindElement(By.CssSelector(cssSelector)).Click();
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
+                wait.Until(ExpectedConditions.ElementIsVisible(By.LinkText(linkTextElement)));
+            }
+
+            catch
+            {
+                throw new Exception("Element does't visible");
+            }
         }
 
+        //Assert name of button
+
+
+        //Click on elements
+        public void ClickOnCssSelectorUntilVisible(string cssSelector)
+        {
+            try
+            {
+                
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void ClickOnCssSelector(string cssSelector)
+        {
+            try
+            {
+                CheckVisibleCssSelector(cssSelector);
+                webDriver.FindElement(By.CssSelector(cssSelector)).Click();
+            }
+            catch
+            {
+                throw new ElementNotVisibleException("Element doesn't visible");
+            }            
+        }
+
+        public void ClickOnLinkTextSelector(string linkTextElement)
+        {
+            try
+            {
+                CheckVisibleLinkTextSelector(linkTextElement);
+                webDriver.FindElement(By.LinkText(linkTextElement)).Click();
+            }
+            catch
+            {
+                throw new ElementNotVisibleException("Element doesn't visible");
+            }
+        }
+
+        //Check button text names
+        public void CheckButtonName(string buttonName)
+        {
+            string expectedButtonName = buttonName;
+            string actualButtonName = buttonName;
+
+            try
+            {
+                Assert.AreEqual(expectedButtonName, actualButtonName);
+            }
+            catch
+            {
+                throw new Exception("Button name doesn't match");
+            }
+        }
+
+        //Kill webDriver process
         public void KillWebDriverWindowsProcess()
         {
             var chromeDriverProcess = Process.GetProcessesByName("chromedriver");
@@ -57,7 +125,8 @@ namespace GalantisShop.Settings
                 }
             }
         }
-        
+         
+        //Close webDriver
         public void CloseWebDriver()
         {
             if (webDriver != null)

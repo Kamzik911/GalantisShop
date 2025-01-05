@@ -1,4 +1,5 @@
-﻿global using OpenQA.Selenium;
+﻿global using GalantisShop.Settings;
+global using OpenQA.Selenium;
 global using OpenQA.Selenium.Chrome;
 global using OpenQA.Selenium.Firefox;
 global using OpenQA.Selenium.Edge;

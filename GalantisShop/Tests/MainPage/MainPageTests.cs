@@ -1,6 +1,4 @@
-﻿using GalantisShop.Settings;
-
-namespace GalantisShop.Tests
+﻿namespace GalantisShop.Tests.MainPage
 {
     [TestClass]
     public class MainPageTests
@@ -21,11 +19,17 @@ namespace GalantisShop.Tests
             methods.ClickOnCssSelector(buttonElements.mainPageModalWindow);
         }
 
+        [TestMethod]
+        public void ClickOnGalantisLogo()
+        {
+            methods.ClickOnCssSelector(buttonElements.mainPageMainLogo);
+        }
+
         [TestCleanup]
         public void cleanAfterTest()
         {
             methods.CloseWebDriver();
-            methods.KillWebDriverWindowsProcess();            
+            methods.KillWebDriverWindowsProcess();
         }
     }
 }
