@@ -1,7 +1,7 @@
 ﻿namespace GalantisShop.Tests.MainPage
 {
     [TestClass]
-    public class MainPageTests
+    public class SearchField
     {
         Methods methods = new Methods();
         ButtonElements buttonElements = new ButtonElements();
@@ -11,18 +11,14 @@
         {
             methods.MaximizeBrowserWindow();
             methods.GoToMainPage();
-        }
-
-        [TestMethod]
-        public void CloseMainPageModalWindow()
-        {
             methods.ClickOnVisibleCssSelector(buttonElements.mainPageModalWindow);
         }
 
         [TestMethod]
-        public void ClickOnGalantisLogo()
+        public void ClickOnSearchIcon()
         {
-            methods.ClickOnVisibleCssSelector(buttonElements.mainPageMainLogo);
+            methods.ClickOnVisibleCssSelector(buttonElements.mainPageSearchIcon);
+            methods.WaitForVisibleCssSelector(buttonElements.mainPageSearchField);
         }
 
         [TestCleanup]

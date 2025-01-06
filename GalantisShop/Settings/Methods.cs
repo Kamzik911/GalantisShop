@@ -21,7 +21,7 @@ namespace GalantisShop.Settings
         }
 
         //Waits for elements
-        public void CheckVisibleCssSelector(string cssElement)
+        public void WaitForVisibleCssSelector(string cssElement)
         {
             try
             {
@@ -35,7 +35,21 @@ namespace GalantisShop.Settings
             }
         }
 
-        public void CheckVisibleLinkTextSelector(string linkTextElement)
+        public void WaitForClickableCssSelector(string cssElement)
+        {
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
+                wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(cssElement)));
+            }
+
+            catch
+            {
+                throw new Exception("Element does't visible");
+            }
+        }
+
+        public void WaitForVisibleLinkTextSelector(string linkTextElement)
         {
             try
             {
@@ -49,27 +63,17 @@ namespace GalantisShop.Settings
             }
         }
 
+
+
         //Assert name of button
 
 
-        //Click on elements
-        public void ClickOnCssSelectorUntilVisible(string cssSelector)
+        //Click on elements        
+        public void ClickOnVisibleCssSelector(string cssSelector)
         {
             try
             {
-                
-            }
-            catch
-            {
-
-            }
-        }
-
-        public void ClickOnCssSelector(string cssSelector)
-        {
-            try
-            {
-                CheckVisibleCssSelector(cssSelector);
+                WaitForVisibleCssSelector(cssSelector);
                 webDriver.FindElement(By.CssSelector(cssSelector)).Click();
             }
             catch
@@ -78,11 +82,11 @@ namespace GalantisShop.Settings
             }            
         }
 
-        public void ClickOnLinkTextSelector(string linkTextElement)
+        public void ClickOnVisibleLinkTextSelector(string linkTextElement)
         {
             try
             {
-                CheckVisibleLinkTextSelector(linkTextElement);
+                WaitForVisibleLinkTextSelector(linkTextElement);
                 webDriver.FindElement(By.LinkText(linkTextElement)).Click();
             }
             catch

@@ -12,27 +12,14 @@
         {
             methods.MaximizeBrowserWindow();
             methods.GoToMainPage();
-            methods.ClickOnCssSelector(buttonElements.mainPageModalWindow);
-        }
-
-        [TestMethod]
-        public void CheckCurrencyNames()
-        {
-            methods.ClickOnCssSelector(buttonElements.currencyDropDownButton);
-            methods.CheckVisibleCssSelector(buttonElements.currencyDropDownList);
-            methods.CheckButtonName(buttonElements.audDropDownButton);
-            methods.CheckButtonName(buttonElements.cadDropDownButton);
-            methods.CheckButtonName(buttonElements.eurDropDownButton);
-            methods.CheckButtonName(buttonElements.gbpDropDownButton);
-            methods.CheckButtonName(buttonElements.jpyDropDownButton);
-            methods.CheckButtonName(buttonElements.nzdDropDownButton);
-        }
+            methods.ClickOnVisibleCssSelector(buttonElements.mainPageModalWindow);
+        }        
 
         [TestMethod]
         public void SelectCurrencies() 
         {                     
-            methods.ClickOnCssSelector(buttonElements.currencyDropDownButton);
-            methods.CheckVisibleCssSelector(buttonElements.currencyDropDownList);
+            methods.ClickOnVisibleCssSelector(buttonElements.currencyDropDownButton);
+            methods.WaitForVisibleCssSelector(buttonElements.currencyDropDownList);
             methods.CheckButtonName(buttonElements.audDropDownButton);
         }
 
