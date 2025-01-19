@@ -60,7 +60,22 @@
                 throw new Exception("Element does't visible");
             }
         }
-        //Assert name of button
+
+        public void WaitForVisibleXpathSelector(string xpathElement)
+        {
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
+                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath($"//a[text()={xpathElement}]")));
+            }
+
+            catch
+            {
+                throw new Exception("Element does't visible");
+            }
+        }
+
+        //Assert name of buttons
 
 
         //Click on elements        
@@ -83,6 +98,19 @@
             {
                 WaitForVisibleLinkTextSelector(linkTextElement);
                 webDriver.FindElement(By.LinkText(linkTextElement)).Click();
+            }
+            catch
+            {
+                throw new ElementNotVisibleException("Element doesn't visible");
+            }
+        }
+
+        public void ClickOnVisibleXpathSelector(string xpathElement)
+        {
+            try
+            {
+                WaitForVisibleXpathSelector(xpathElement);
+                webDriver.FindElement(By.XPath($"//a[text()={xpathElement}]")).Click();
             }
             catch
             {

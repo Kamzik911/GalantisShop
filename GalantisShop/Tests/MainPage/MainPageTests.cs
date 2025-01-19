@@ -27,7 +27,7 @@
 
         [TestMethod]
         public void ClickOnCartShopIcon()
-        {
+        {            
             methods.ClickOnVisibleCssSelector(buttonElements.mainPageCartIcon);
         }
 

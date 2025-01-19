@@ -8,7 +8,7 @@
         public string mainPageSearchIcon = "i[class='fas fa-search']:nth-of-type(1)";
         public string mainPageSearchField = "input[class='search form-control']";
         public string mainPageCartIcon = "div[class='cart-wrapper header-item']";
-        public string mainPageSignInButton = "Sign in";
+        public string mainPageSignInButton = "//a[text()='Sign in']"; //"Sign in";
 
         //Main page currenty buttons
         public string currencyDropDownButton = "button[class='btn dropdown-toggle dropdown-toggle-split']";

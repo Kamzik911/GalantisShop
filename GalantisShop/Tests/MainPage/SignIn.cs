@@ -17,7 +17,7 @@
         [TestMethod]
         public void ClickOnSignIn()
         {
-            methods.ClickOnVisibleLinkTextSelector(buttonElements.mainPageSignInButton);
+            methods.ClickOnVisibleXpathSelector(buttonElements.mainPageSignInButton);
         }
 
         [TestCleanup]
