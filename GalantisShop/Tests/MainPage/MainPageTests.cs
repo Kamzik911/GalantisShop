@@ -25,6 +25,12 @@
             methods.ClickOnVisibleCssSelector(buttonElements.mainPageMainLogo);
         }
 
+        [TestMethod]
+        public void ClickOnCartShopIcon()
+        {
+            methods.ClickOnVisibleCssSelector(buttonElements.mainPageCartIcon);
+        }
+
         [TestCleanup]
         public void cleanAfterTest()
         {

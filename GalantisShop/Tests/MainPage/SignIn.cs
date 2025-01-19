@@ -1,25 +1,23 @@
 ﻿namespace GalantisShop.Tests.MainPage
 {
     [TestClass]
-    public class CurrencyList
+    public class SignIn
     {
         Methods methods = new Methods();
-        ButtonElements buttonElements = new ButtonElements();        
-        
+        ButtonElements buttonElements = new ButtonElements();
+
         [TestInitialize]
         public void GoToMainPage()
-        {            
+        {
             methods.MaximizeBrowserWindow();
             methods.GoToMainPage();
             methods.ClickOnVisibleCssSelector(buttonElements.mainPageModalWindow);
-        }        
+        }
 
         [TestMethod]
-        public void SelectCurrencies() 
-        {                     
-            methods.ClickOnVisibleCssSelector(buttonElements.currencyDropDownButton);
-            methods.WaitForVisibleCssSelector(buttonElements.currencyDropDownList);
-            methods.CheckButtonName(buttonElements.audDropDownButton);
+        public void ClickOnSignIn()
+        {
+            methods.ClickOnVisibleLinkTextSelector(buttonElements.mainPageSignInButton);
         }
 
         [TestCleanup]

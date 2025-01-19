@@ -1,16 +1,14 @@
-﻿using System.Diagnostics;
-
-namespace GalantisShop.Settings
+﻿namespace GalantisShop.Settings
 {
     public class Methods
     {
-        IWebDriver webDriver = new SelectWebDriver("Chrome").getWebDriver();
-
-        string galantisMainPage = "https://galantis.merchtable.com";
+        IWebDriver webDriver = new SelectWebDriver("Chrome").GetWebDriver();        
+        private string galantisMainPage = "https://galantis.merchtable.com/";
 
         //Setup browser
         public void MaximizeBrowserWindow()
         {
+
             webDriver.Manage().Window.Maximize();
         }
 
@@ -62,9 +60,6 @@ namespace GalantisShop.Settings
                 throw new Exception("Element does't visible");
             }
         }
-
-
-
         //Assert name of button
 
 
